@@ -1,12 +1,14 @@
 require("dotenv").config();
 const express = require("express");
-const PORT = process.env.PORT;
 const app = express();
 
 app.use(express.json());
 
-app.use("/mahasiswa", require("./routes/mahasiswa"));
+app.use("/api/auth", require("./routes/authRoutes"));
+app.use("/api/anggota", require("./routes/anggotaRoutes"));
+
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
-    console.log("Server jalan");
+    console.log(`Server jalan di port ${PORT}`);
 });
