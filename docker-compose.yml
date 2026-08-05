@@ -1,0 +1,47 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: postgres-perpustakaan
+
+    restart: always
+
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: jtm34541
+      POSTGRES_DB: perpustakaan
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  app:
+    build: .
+
+    container_name: express-perpustakaan
+
+    restart: always
+
+    depends_on:
+      - postgres
+
+    ports:
+      - "3001:3001"
+
+    environment:
+      DATABASE_URL: postgres://postgres:jtm34541@postgres:5432/perpustakaan
+      JWT_SECRET: wowogamink00jackchowee
+      PORT: 3001
+
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+    command: npm run dev
+
+
+volumes:
+  postgres-data:
