@@ -5,6 +5,7 @@ const verifyToken = require("../middlewares/authMiddleware");
 
 router.get("/", anggotaController.getAll);
 router.get("/:nim", anggotaController.getNim);
+
 router.put("/:nim", verifyToken, anggotaController.update);
 router.delete("/:nim", verifyToken, anggotaController.delete);
 

@@ -1,0 +1,226 @@
+{
+  "info": {
+    "_postman_id": "41989d79-978c-4911-8832-5243a02215f6",
+    "name": "PostmanCollection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "45040467",
+    "_collection_link": "https://go.postman.co/collection/45040467-41989d79-978c-4911-8832-5243a02215f6?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Registrasi + POST Anggota",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer ",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nama\": \"Joko\",\r\n    \"email\": \"joko2@gmail.com\",\r\n    \"password\": \"12345\",\r\n    \"nim\": \"2410511001\",\r\n    \"umur\": 20,\r\n    \"jurusan\": \"Informatika\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3001/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3001",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer ",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"joko2@gmail.com\",\r\n    \"password\": \"12345\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3001/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3001",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET Anggota",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer ",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3001/api/anggota",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3001",
+          "path": [
+            "api",
+            "anggota"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET Anggota by NIM",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3001/api/anggota/2410511001",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3001",
+          "path": [
+            "api",
+            "anggota",
+            "2410511001"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Data Anggota",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJqb2tvMkBnbWFpbC5jb20iLCJpYXQiOjE3ODY0NTM5MTgsImV4cCI6MTc4NjQ1NzUxOH0.DZM9tRXsIqz0jg6eJJ060dStK51WkppNHj0ky2Dzfkg",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nama\": \"Jack\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3001/api/anggota/2410511001",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3001",
+          "path": [
+            "api",
+            "anggota",
+            "2410511001"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Data Anggota",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJqb2tvMkBnbWFpbC5jb20iLCJpYXQiOjE3ODY0NTM5MTgsImV4cCI6MTc4NjQ1NzUxOH0.DZM9tRXsIqz0jg6eJJ060dStK51WkppNHj0ky2Dzfkg",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3001/api/anggota/2410511001",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3001",
+          "path": [
+            "api",
+            "anggota",
+            "2410511001"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

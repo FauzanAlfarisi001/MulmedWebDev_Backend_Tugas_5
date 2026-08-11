@@ -50,16 +50,12 @@ exports.register = async (req,res) => {
         await db.insert(users).values({ nama, email, password:hash, nim, umur, jurusan});
 
         res.status(201).json({
+            success: true,
             message:"Registrasi berhasil"
         });
 
     } catch(err){
-        console.dir(err, { depth: null });
-
-        res.status(500).json({
-            message:err.message,
-            cause: err.cause?.message
-        });
+        next(err);
     }
 }
 
@@ -90,12 +86,12 @@ exports.login = async(req,res) => {
         );
 
         res.json({
+            success: true,
+            message: "Login berhasil",
             token
         });
 
     } catch(err){
-        res.status(500).json({
-            message: err.message
-        });
+        next(err);
     }
 }
