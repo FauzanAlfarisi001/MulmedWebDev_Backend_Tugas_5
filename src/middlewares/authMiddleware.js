@@ -1,22 +1,37 @@
 const jwt = require("jsonwebtoken");
 
-module.exports = (req,res,next)=>{
+module.exports = (req, res, next) => {
     try {
-        const authHeader=req.headers.authorization;
+        const authHeader = req.headers.authorization;
 
-        if (!authHeader){
-            return res.status(401).json({ message:"Masukkan token"});
+        if (!authHeader) {
+            const error = new Error("Silahkan masukkan token");
+            error.statusCode = 401;
+            return next(error);
         }
 
-        const token = authHeader.split(" ")[1];
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const parts = authHeader.split(" ");
+
+        if (parts.length !== 2 || parts[0] !== "Bearer") {
+            const error = new Error("Pastikan format tokennya: Bearer <token>");
+            error.statusCode = 401;
+            return next(error);
+        }
+
+        const token = parts[1];
+
+        const decoded = jwt.verify(
+            token,
+            process.env.JWT_SECRET
+        );
 
         req.user = decoded;
+
         next();
 
-    } catch(err){
-
-        res.status(401).json({ message:"Token udah tidak valid" });
+    } catch (err) {
+        err.statusCode = 401;
+        err.message = "Token salah atau sudah kadaluarsa";
+        next(err);
     }
-
-}
+};
